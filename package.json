@@ -16,7 +16,10 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress run",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down -v",
+    "ci": "npm run docker:up && wait-on http-get://localhost:8002 && npm test"
   },
   "dependencies": {
     "cypress": "^15.2.0"
