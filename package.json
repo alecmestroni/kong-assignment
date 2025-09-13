@@ -1,6 +1,6 @@
 {
   "name": "kong-assignment",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Technical exercise for Kong",
   "homepage": "https://github.com/alecmestroni/kong-assignment#readme",
   "bugs": {
@@ -15,9 +15,16 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run"
+    "test": "cypress run",
+    "prepare": "husky install"
   },
   "dependencies": {
     "cypress": "^15.2.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }
