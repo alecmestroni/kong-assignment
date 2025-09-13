@@ -1,0 +1,23 @@
+{
+  "name": "kong-assignment",
+  "version": "0.0.1",
+  "description": "Technical exercise for Kong",
+  "homepage": "https://github.com/alecmestroni/kong-assignment#readme",
+  "bugs": {
+    "url": "https://github.com/alecmestroni/kong-assignment/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alecmestroni/kong-assignment.git"
+  },
+  "license": "ISC",
+  "author": "alec-js",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run"
+  },
+  "dependencies": {
+    "cypress": "^15.2.0"
+  }
+}

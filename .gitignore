@@ -1,0 +1,17 @@
+# Node modules
+node_modules/
+
+# Cypress Output (screenshot, video, report)
+cypress/screenshots/
+cypress/videos/
+cypress/reports/
+
+# Coverage
+coverage/
+
+# Editor/IDE
+.vscode/
+.idea/
+
+# Debug folder for docker kong-gateway.tar
+kong
