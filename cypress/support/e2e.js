@@ -1,17 +1,11 @@
-// ***********************************************************
-// This example support/e2e.js is processed and
-// loaded automatically before your test files.
-//
-// This is a great place to put global configuration and
-// behavior that modifies Cypress.
-//
-// You can change the location of this file or turn off
-// automatically serving support files with the
-// 'supportFile' configuration option.
-//
-// You can read more here:
-// https://on.cypress.io/configuration
-// ***********************************************************
+/* 
 
-// Import commands.js using ES2015 syntax:
-import './commands'
+We use a specific support file for every application but this is needed just to avoid error:
+
+Your project does not contain a default supportFile. We expect a file matching cypress/support/e2e.{js,jsx,ts,tsx} to exist.
+
+If a support file is not necessary for your project, set supportFile to false.
+
+https://on.cypress.io/support-file-missing-or-invalid   
+
+*/
