@@ -15,7 +15,7 @@ Cypress.Commands.add("openWorkspaceOverview", () => {
 })
 
 Cypress.Commands.add("getDataTestId", (dataTestId, shouldScroll = true) => {
-  cy.get(`[data-testid="${dataTestId}"]`, { timeout: 15000 }).as(dataTestId)
+  cy.get(`[data-testid="${dataTestId}"]`, { timeout: 15_000 }).as(dataTestId)
   if (shouldScroll) {
     cy.get(`@${dataTestId}`).scrollIntoView().should("be.visible").should("not.be.disabled")
   } else {
@@ -24,7 +24,7 @@ Cypress.Commands.add("getDataTestId", (dataTestId, shouldScroll = true) => {
 })
 
 Cypress.Commands.add("getDataTestIdDisabled", (dataTestId) => {
-  cy.get(`[data-testid="${dataTestId}"]`, { timeout: 15000 }).scrollIntoView().should("be.visible").should("be.disabled")
+  cy.get(`[data-testid="${dataTestId}"]`, { timeout: 15_000 }).scrollIntoView().should("be.visible").should("be.disabled")
 })
 
 Cypress.Commands.add("selectInputFromWrapper", (dataTestId, id) => {
@@ -33,7 +33,7 @@ Cypress.Commands.add("selectInputFromWrapper", (dataTestId, id) => {
 })
 
 Cypress.Commands.add("removeAttrFromDataTestId", (dataTestId, attr) => {
-  cy.get(`[data-testid="${dataTestId}"]`, { timeout: 15000 })
+  cy.get(`[data-testid="${dataTestId}"]`, { timeout: 15_000 })
     .scrollIntoView()
     .should("be.visible")
     .invoke("removeAttr", attr)
