@@ -5,9 +5,13 @@ describe("Gateway Route Creation - Basic Form", () => {
     );
   });
   describe("Form State and Validation", () => {
-    it("should keep submit button disabled when required fields are missing", () => {
-      cy.getDataTestIdDisabled(Cypress.env("SELECTORS").ROUTE_FORM_SUBMIT);
-    });
+    it(
+      "should keep submit button disabled when required fields are missing",
+      { jiraKey: "KONG-9127" },
+      () => {
+        cy.getDataTestIdDisabled(Cypress.env("SELECTORS").ROUTE_FORM_SUBMIT);
+      },
+    );
   });
 
   describe("Successful Route Creation with only Path", () => {
@@ -15,13 +19,17 @@ describe("Gateway Route Creation - Basic Form", () => {
       cy.cleanEnvironment();
     });
 
-    it("should create Route successfully with path", () => {
-      cy.compileBasicRouteForm();
+    it(
+      "should create Route successfully with path",
+      { jiraKey: "KONG-4652" },
+      () => {
+        cy.compileBasicRouteForm();
 
-      cy.createRoute();
+        cy.createRoute();
 
-      cy.checkRouteCreated();
-    });
+        cy.checkRouteCreated();
+      },
+    );
   });
   describe("Successful Route Creation with full information", () => {
     before("Create Service and save ID", () => {
@@ -32,12 +40,16 @@ describe("Gateway Route Creation - Basic Form", () => {
       );
     });
 
-    it("should create Route successfully with associated service", () => {
-      cy.compileBasicRouteForm("full");
+    it(
+      "should create Route successfully with associated service",
+      { jiraKey: "KONG-8316" },
+      () => {
+        cy.compileBasicRouteForm("full");
 
-      cy.createRoute("full");
+        cy.createRoute("full");
 
-      cy.checkRouteCreated();
-    });
+        cy.checkRouteCreated();
+      },
+    );
   });
 });

@@ -22,6 +22,7 @@ module.exports = defineConfig({
     baseUrl: "http://localhost:8002",
     setupNodeEvents(on, config) {
       require("cypress-env")(on, config, __dirname);
+      require("cypress-xray-junit-reporter/plugin")(on, config, {});
       return config;
     },
   },
