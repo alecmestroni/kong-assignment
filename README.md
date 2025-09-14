@@ -204,6 +204,13 @@ GitHub Actions automatically:
 - **Service Association**: Create routes linked to existing services
 - **Form Validation**: Ensure proper form state management
 
+### Plugins (4 tests)
+
+- **Route Plugin Association**: Navigate to plugin selection from route details
+- **Plugin Selection Navigation**: Access plugin selection from multiple entry points
+- **Basic Plugin Creation**: Associate Basic Auth plugin to routes
+- **Navigation Validation**: Verify correct URL parameters and page states
+
 ### JIRA Test Keys
 
 All tests include randomized JIRA keys (KONG-XXXX format) for traceability:
@@ -238,6 +245,15 @@ All tests include randomized JIRA keys (KONG-XXXX format) for traceability:
 | KONG-4652 | Route creation with path only                       |
 | KONG-8316 | Route creation with service association             |
 | KONG-8399 | Successful Route Creation with advanced information |
+
+### **Plugins Test Suite:**
+
+| JIRA Key  | Test Case Description                                 |
+| --------- | ----------------------------------------------------- |
+| KONG-7842 | Navigate to plugin selection from route with route ID |
+| KONG-5291 | Plugin selection navigation from empty state          |
+| KONG-3674 | Plugin selection navigation from add plugin button    |
+| KONG-9158 | Associate Basic Auth plugin to route successfully     |
 
 ## Design Decisions
 
