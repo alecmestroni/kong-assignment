@@ -23,7 +23,7 @@ describe("Gateway Route Creation - Basic Form", () => {
   })
   describe("Successful Route Creation with full information", () => {
     before("Create Service and save ID", () => {
-      cy.createItem("services", { url: Cypress.env("SERVICE_URL"), name: `new-service-${Date.now()}` }, { name: "serviceId", property: "id" })
+      cy.createServiceAdmin()
     })
 
     it("should create Route successfully with associated service", { jiraKey: "KONG-8316" }, () => {
@@ -36,7 +36,7 @@ describe("Gateway Route Creation - Basic Form", () => {
   })
   describe("Successful Route Creation with advanced information", () => {
     before("Create Service and save ID", () => {
-      cy.createItem("services", { url: Cypress.env("SERVICE_URL"), name: `new-service-${Date.now()}` }, { name: "serviceId", property: "id" })
+      cy.createServiceAdmin()
     })
 
     it("should create Route successfully with advanced configuration and associated service", { jiraKey: "KONG-8399" }, () => {
