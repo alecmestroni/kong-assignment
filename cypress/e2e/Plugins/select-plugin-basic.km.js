@@ -1,7 +1,7 @@
 describe("Gateway Plugin Creation - Basic Form", () => {
   beforeEach(() => {
-    cy.createServiceAndSaveId("serviceId")
-    cy.createRouteAndSaveId("routeId")
+    cy.createServiceAdmin()
+    cy.createRouteAdmin()
     cy.then(() => {
       cy.visit(`/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES}/${Cypress.env("routeId")}`)
       cy.getDataTestId(Cypress.env("SELECTORS").ROUTE_PLUGINS).click()

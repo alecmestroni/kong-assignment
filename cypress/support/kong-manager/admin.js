@@ -85,25 +85,25 @@ Cypress.Commands.add("deleteAllItems", (itemType) => {
   })
 })
 
-Cypress.Commands.add("createServiceAndSaveId", (saveIdAs = "serviceId") => {
+Cypress.Commands.add("createServiceAdmin", () => {
   cy.createItem(
     "services",
     {
       url: Cypress.env("SERVICE_URL"),
       name: `new-service-${Date.now()}`,
     },
-    { name: saveIdAs, property: "id" }
+    { name: "serviceId", property: "id" }
   )
 })
 
-Cypress.Commands.add("createRouteAndSaveId", (saveIdAs = "routeId") => {
+Cypress.Commands.add("createRouteAdmin", () => {
   cy.createItem(
     "routes",
     {
       paths: ["/mock"],
       name: `new-route-${Date.now()}`,
     },
-    { name: saveIdAs, property: "id" }
+    { name: "routeId", property: "id" }
   )
 })
 

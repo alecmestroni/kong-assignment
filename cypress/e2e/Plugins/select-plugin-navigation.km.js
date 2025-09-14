@@ -1,7 +1,7 @@
 describe("Plugin Selection - Navigation Flow", () => {
   before("Create Service and Route", () => {
-    cy.createServiceAndSaveId("serviceId")
-    cy.createRouteAndSaveId("routeId")
+    cy.createServiceAdmin()
+    cy.createRouteAdmin()
   })
 
   describe("Route Plugin Navigation", () => {

@@ -38,7 +38,7 @@ describe("Gateway Route Creation - Navigation Flow", () => {
   })
   describe("Routes Page - Add Route Action", () => {
     before(() => {
-      cy.createRoute({ name: `new-route-${Date.now()}` })
+      cy.createRouteAdmin()
     })
     it("should redirect to route creation form with service selector visible", { jiraKey: "KONG-7865" }, () => {
       cy.visit(`/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES}`)
