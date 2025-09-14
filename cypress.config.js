@@ -1,10 +1,8 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require("cypress")
 
 module.exports = defineConfig({
   e2e: {
-    // sometimes we got cross-origin uncaught exception
     defaultCommandTimeout: 10_000,
-    retries: 1,
     betterRetries: true,
     deleteVideoOnPassed: true,
     reporter: "cypress-multi-reporters",
@@ -20,12 +18,12 @@ module.exports = defineConfig({
     },
     baseUrl: "http://localhost:8002",
     setupNodeEvents(on, config) {
-      require("cypress-env")(on, config, __dirname);
-      require("cypress-xray-junit-reporter/plugin")(on, config, {});
-      return config;
+      require("cypress-env")(on, config, __dirname)
+      require("cypress-xray-junit-reporter/plugin")(on, config, {})
+      return config
     },
   },
   env: {
     ENV_LOG_MODE: "silent",
   },
-});
+})

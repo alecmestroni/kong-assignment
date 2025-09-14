@@ -156,13 +156,9 @@ This project uses `cypress-xray-junit-reporter` for Jira/Xray supported test rep
 
 ```javascript
 // Each test includes JIRA integration
-it(
-  "should create Gateway Service successfully",
-  { jiraKey: "KONG-6742" },
-  () => {
-    // Test implementation
-  },
-);
+it("should create Gateway Service successfully", { jiraKey: "KONG-6742" }, () => {
+  // Test implementation
+})
 ```
 
 ### Generated Reports
@@ -232,15 +228,16 @@ All tests include randomized JIRA keys (KONG-XXXX format) for traceability:
 
 ### **Routes Test Suite:**
 
-| JIRA Key  | Test Case Description                    |
-| --------- | ---------------------------------------- |
-| KONG-5784 | Route navigation from service page       |
-| KONG-3921 | Route navigation from workspace overview |
-| KONG-6203 | Route navigation from empty state        |
-| KONG-7865 | Route navigation from add button         |
-| KONG-9127 | Route form validation (disabled state)   |
-| KONG-4652 | Route creation with path only            |
-| KONG-8316 | Route creation with service association  |
+| JIRA Key  | Test Case Description                               |
+| --------- | --------------------------------------------------- |
+| KONG-5784 | Route navigation from service page                  |
+| KONG-3921 | Route navigation from workspace overview            |
+| KONG-6203 | Route navigation from empty state                   |
+| KONG-7865 | Route navigation from add button                    |
+| KONG-9127 | Route form validation (disabled state)              |
+| KONG-4652 | Route creation with path only                       |
+| KONG-8316 | Route creation with service association             |
+| KONG-8399 | Successful Route Creation with advanced information |
 
 ## Design Decisions
 
@@ -257,12 +254,12 @@ All tests include randomized JIRA keys (KONG-XXXX format) for traceability:
 
   ```javascript
   before("clean environment", () => {
-    cy.cleanEnvironment();
-  });
+    cy.cleanEnvironment()
+  })
 
   after("clean environment", () => {
-    cy.cleanEnvironment();
-  });
+    cy.cleanEnvironment()
+  })
   ```
 
 - **Custom Commands**: Configured a dedicated `support/kong-manager.js` support file. This modular approach allows multiple applications to be tested in the same repository, with each application loading only its specific code. Reusable functions are organized in `cypress/support/kong-manager/`
