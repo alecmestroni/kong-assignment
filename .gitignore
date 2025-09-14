@@ -9,6 +9,9 @@ cypress/reports/
 # Coverage
 coverage/
 
+# Reports
+report/
+
 # Editor/IDE
 .vscode/
 .idea/

@@ -1,6 +1,6 @@
 {
   "name": "kong-assignment",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Technical exercise for Kong",
   "homepage": "https://github.com/alecmestroni/kong-assignment#readme",
   "bugs": {
@@ -15,17 +15,21 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "prepare": "husky && husky install",
+    "prepare": "husky",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down -v",
     "cy:open:local": "cypress open --e2e -b chrome -e envName=km.local",
     "cy:run:local": "cypress run -e envName=km.local",
     "test:open": "npm run docker:up && wait-on http-get://localhost:8002 && npm run cy:open:local",
-    "test:run": "npm run docker:up && wait-on http-get://localhost:8002 && npm run cy:run:local"
+    "test:run": "npm run docker:up && wait-on http-get://localhost:8002 && npm run cy:run:local",
+    "merge:reports": "npx junit-merge -d \"./report\" -o \"./report/merged-report.xml\""
   },
   "dependencies": {
     "cypress": "^15.2.0",
-    "cypress-env": "^1.1.6"
+    "cypress-env": "^1.1.6",
+    "cypress-multi-reporters": "^2.0.5",
+    "cypress-xray-junit-reporter": "^1.2.1",
+    "junit-merge": "^2.0.0"
   },
   "devDependencies": {
     "husky": "^9.1.7",

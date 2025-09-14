@@ -31,6 +31,33 @@ jobs:
             npm run test:run
           done
 
+      - name: Merge reports
+        run: npm run merge:reports
+
+      - name: Upload Test Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: report/merged-report.xml
+          retention-days: 7
+
+      - name: Upload Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          retention-days: 7
+
+      - name: Upload Videos
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos
+          retention-days: 7
+
       - name: Compose down (always)
         if: always()
         run: npm run docker:down
