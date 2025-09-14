@@ -27,12 +27,40 @@ Cypress.Commands.add("checkServiceCreated", () => {
 });
 
 Cypress.Commands.add("createService", () => {
-  const path = Cypress.env("PATHS").SERVICES;
+  cy.createServiceSimple().then(() => {
+    cy.interceptSimple(`/${Cypress.env("serviceId")}*`, "GET");
+    cy.interceptSimple(`/${Cypress.env("serviceId")}`, "GET");
 
+    cy.waitSimple(`/${Cypress.env("serviceId")}*`, 200).then((api) => {
+      expect(
+        api.response.body,
+        `api should response with the body we expect`,
+      ).to.deep.eq(Cypress.env("serviceData"));
+    });
+    cy.waitSimple(`/${Cypress.env("serviceId")}`, 200).then((api) => {
+      expect(
+        api.response.body,
+        `api should response with the body we expect`,
+      ).to.deep.eq(Cypress.env("serviceData"));
+    });
+
+    cy.checkServiceDefaultProperties();
+  });
+
+  cy.checkTextFromCopy(Cypress.env("SELECTORS").UUID_COPY, "serviceId");
+});
+
+Cypress.Commands.add("createServiceSimple", () => {
+  const path = Cypress.env("PATHS").SERVICES;
   cy.interceptSimple(path, "POST", false);
 
+  cy.saveTextFromInput(
+    Cypress.env("SELECTORS").SERVICE_FORM_INPUT_NAME,
+    "serviceName",
+  );
+
   cy.clickDataTestIdAndWaitApi(
-    Cypress.env("SELECTORS").SUBMIT_FORM,
+    Cypress.env("SELECTORS").SERVICE_FORM_SUBMIT,
     "/validate",
   ).then((api) => {
     expect(
@@ -40,7 +68,6 @@ Cypress.Commands.add("createService", () => {
       `api should response with message: schema validation successful`,
     ).to.eq("schema validation successful");
   });
-
   cy.waitSimple(path, 201).then((api) => {
     expect(
       api.response.body.name,
@@ -51,30 +78,12 @@ Cypress.Commands.add("createService", () => {
 
     const serviceId = serviceData.id;
     Cypress.env("serviceId", serviceId);
-
-    cy.interceptSimple(`/${serviceId}*`, "GET");
-    cy.interceptSimple(`/${serviceId}`, "GET");
-
-    cy.waitSimple(`/${serviceId}*`, 200).then((api) => {
-      expect(
-        api.response.body,
-        `api should response with the body we expect`,
-      ).to.deep.eq(Cypress.env("serviceData"));
-    });
-    cy.waitSimple(`/${serviceId}`, 200).then((api) => {
-      expect(
-        api.response.body,
-        `api should response with the body we expect`,
-      ).to.deep.eq(Cypress.env("serviceData"));
-    });
-
-    cy.checkServiceDefaultProperties();
   });
 });
 
 Cypress.Commands.add("createServiceWithoutProp", (prop) => {
   cy.interceptAndRemoveProp("/validate", prop, "POST", true);
-  cy.getDataTestId(Cypress.env("SELECTORS").SUBMIT_FORM).click();
+  cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_FORM_SUBMIT).click();
   cy.waitSimple("/validate-" + prop, 400).then((api) => {
     expect(
       api.response.body.code,
@@ -120,10 +129,10 @@ Cypress.Commands.add("compileProtocolForm", () => {
   cy.getDataTestId(
     `${Cypress.env("SELECTORS").SELECT_ITEM_PREFIX}${serviceUrl.protocol.replace(":", "")}`,
   ).click();
-  cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_HOST_INPUT).type(
+  cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_FORM_INPUT_HOST).type(
     serviceUrl.host,
   );
-  cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_PATH_INPUT).type(
+  cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_FORM_INPUT_PATH).type(
     serviceUrl.pathname,
   );
 });
