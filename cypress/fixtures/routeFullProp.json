@@ -1,0 +1,38 @@
+{
+  "protocols": [
+    "http",
+    "https"
+  ],
+  "tags": [
+    "tag1",
+    "tag2"
+  ],
+  "https_redirect_status_code": 426,
+  "strip_path": true,
+  "preserve_host": false,
+  "request_buffering": true,
+  "response_buffering": true,
+  "methods": [
+    "GET",
+    "PUT",
+    "POST",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+    "HEAD",
+    "CONNECT",
+    "TRACE"
+  ],
+  "hosts": [
+    "example.com"
+  ],
+  "paths": [
+    "/mock"
+  ],
+  "headers": null,
+  "regex_priority": 0,
+  "path_handling": "v0",
+  "sources": null,
+  "destinations": null,
+  "snis": null
+}

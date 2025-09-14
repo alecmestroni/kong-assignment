@@ -92,8 +92,14 @@ Cypress.Commands.add("deleteAllItems", (itemType) => {
 });
 
 Cypress.Commands.add("cleanEnvironment", () => {
-  cy.deleteAllItems("services");
+  // route should be deleted before service
   cy.deleteAllItems("routes");
+  cy.deleteAllItems("services");
   cy.deleteAllItems("consumers");
   cy.deleteAllItems("plugins");
+
+  // Clear temporary environment variables
+  Cypress.env("TEMP").forEach((tempVar) => {
+    Cypress.env(tempVar, null);
+  });
 });

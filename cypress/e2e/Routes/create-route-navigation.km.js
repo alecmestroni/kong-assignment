@@ -20,7 +20,9 @@ describe("Gateway Route Creation - Navigation Flow", () => {
         "eq",
         `?serviceId=${Cypress.env("serviceId")}&redirect=/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").SERVICES}/${Cypress.env("serviceId")}${Cypress.env("PATHS").ROUTES}`,
       );
-      cy.get(Cypress.env("SELECTORS").SERVICE_SELECT_INPUT).should("not.exist");
+      cy.get(Cypress.env("SELECTORS").ROUTE_SERVICE_SELECT_INPUT).should(
+        "not.exist",
+      );
       cy.contains(Cypress.env("LABELS").ROUTE_CREATION).should("exist");
     });
   });
@@ -34,7 +36,9 @@ describe("Gateway Route Creation - Navigation Flow", () => {
         `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES_CREATION}`,
       );
       cy.location("search", { timeout: 30000 }).should("eq", `?cta=new-user`);
-      cy.get(Cypress.env("SELECTORS").SERVICE_SELECT_INPUT).should("exist");
+      cy.get(Cypress.env("SELECTORS").ROUTE_SERVICE_SELECT_INPUT).should(
+        "exist",
+      );
       cy.contains(Cypress.env("LABELS").ROUTE_CREATION).should("exist");
     });
   });
@@ -49,7 +53,9 @@ describe("Gateway Route Creation - Navigation Flow", () => {
         `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES_CREATION}`,
       );
       cy.location("search", { timeout: 30000 }).should("eq", "");
-      cy.get(Cypress.env("SELECTORS").SERVICE_SELECT_INPUT).should("exist");
+      cy.get(Cypress.env("SELECTORS").ROUTE_SERVICE_SELECT_INPUT).should(
+        "exist",
+      );
       cy.contains(Cypress.env("LABELS").ROUTE_CREATION).should("exist");
     });
   });
@@ -70,7 +76,9 @@ describe("Gateway Route Creation - Navigation Flow", () => {
         `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES_CREATION}`,
       );
       cy.location("search", { timeout: 30000 }).should("eq", "");
-      cy.get(Cypress.env("SELECTORS").SERVICE_SELECT_INPUT).should("exist");
+      cy.get(Cypress.env("SELECTORS").ROUTE_SERVICE_SELECT_INPUT).should(
+        "exist",
+      );
       cy.contains(Cypress.env("LABELS").ROUTE_CREATION).should("exist");
     });
   });
