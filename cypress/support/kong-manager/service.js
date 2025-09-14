@@ -138,7 +138,7 @@ Cypress.Commands.add("compileProtocolForm", () => {
 });
 
 Cypress.Commands.add("checkNoRequest", (path) => {
-  // Verify no validation request was sent to server
+  // We verify for 2 seconds that no validation request was sent to server
   cy.wait(2000);
   cy.get(`@${path}.all`).should("have.length", 0);
 });
