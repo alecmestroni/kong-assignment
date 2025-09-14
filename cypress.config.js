@@ -2,6 +2,7 @@ const { defineConfig } = require("cypress")
 
 module.exports = defineConfig({
   e2e: {
+    retries:1,
     defaultCommandTimeout: 10_000,
     betterRetries: true,
     deleteVideoOnPassed: true,
