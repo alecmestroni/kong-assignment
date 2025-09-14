@@ -1,8 +1,8 @@
 describe("Gateway Service Creation - URL Form", () => {
   beforeEach(() => {
-    cy.visitHomePage();
-    cy.openWorkspaceOverview();
-    cy.getDataTestId(Cypress.env("SELECTORS").ACTION_BUTTON).click();
+    cy.visit(
+      `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").SERVICES_CREATION}`,
+    );
     cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_URL_LABEL).click();
   });
 

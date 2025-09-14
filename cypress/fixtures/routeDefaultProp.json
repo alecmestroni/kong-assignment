@@ -1,0 +1,20 @@
+{
+  "hosts": null,
+  "path_handling": "v0",
+  "methods": null,
+  "sources": null,
+  "strip_path": true,
+  "destinations": null,
+  "request_buffering": true,
+  "https_redirect_status_code": 426,
+  "regex_priority": 0,
+  "tags": [],
+  "headers": null,
+  "protocols": [
+    "http",
+    "https"
+  ],
+  "snis": null,
+  "response_buffering": true,
+  "preserve_host": false
+}

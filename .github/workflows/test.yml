@@ -24,8 +24,12 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Wait for Test
-        run: npm run test:run
+      - name: Run Tests 2 times
+        run: |
+          for i in {1..2}; do
+            echo "Test run $i/2"
+            npm run test:run
+          done
 
       - name: Compose down (always)
         if: always()

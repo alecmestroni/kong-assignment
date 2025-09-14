@@ -21,23 +21,28 @@ Cypress.Commands.add("openWorkspaceOverview", () => {
   cy.checkDataTestIdFromArray(Cypress.env("SELECTORS").OVERVIEW_CARDS);
 });
 
-Cypress.Commands.add("getDataTestId", (dataTestId) => {
-  return cy
-    .get(`[data-testid="${dataTestId}"]`, { timeout: 45000 })
-    .should("be.visible")
-    .should("not.be.disabled");
+Cypress.Commands.add("getDataTestId", (dataTestId, shouldScroll = true) => {
+  cy.get(`[data-testid="${dataTestId}"]`, { timeout: 45000 }).as(dataTestId);
+  if (shouldScroll) {
+    cy.get(`@${dataTestId}`)
+      .scrollIntoView()
+      .should("be.visible")
+      .should("not.be.disabled");
+  } else {
+    cy.get(`@${dataTestId}`).should("be.visible").should("not.be.disabled");
+  }
 });
 
 Cypress.Commands.add("getDataTestIdDisabled", (dataTestId) => {
-  return cy
-    .get(`[data-testid="${dataTestId}"]`, { timeout: 45000 })
+  cy.get(`[data-testid="${dataTestId}"]`, { timeout: 45000 })
+    .scrollIntoView()
     .should("be.visible")
     .should("be.disabled");
 });
 
 Cypress.Commands.add("removeAttrFromDataTestId", (dataTestId, attr) => {
-  return cy
-    .get(`[data-testid="${dataTestId}"]`, { timeout: 45000 })
+  cy.get(`[data-testid="${dataTestId}"]`, { timeout: 45000 })
+    .scrollIntoView()
     .should("be.visible")
     .invoke("removeAttr", attr)
     .should("not.have.attr", attr);
@@ -129,8 +134,8 @@ Cypress.Commands.add("waitSimple", (name, statusCode = 200) => {
 
 Cypress.Commands.add(
   "clickDataTestIdAndWaitApi",
-  (dataTestId, path, method = "POST", statusCode = 200) => {
-    cy.interceptSimple(path, method, true);
+  (dataTestId, path, method = "POST", statusCode = 200, isNested = true) => {
+    cy.interceptSimple(path, method, isNested);
     cy.getDataTestId(dataTestId).click();
     return cy.waitSimple(path, statusCode);
   },

@@ -1,0 +1,43 @@
+describe("Gateway Route Creation - Basic Form", () => {
+  beforeEach(() => {
+    cy.visit(
+      `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES_CREATION}`,
+    );
+  });
+  describe("Form State and Validation", () => {
+    it("should keep submit button disabled when required fields are missing", () => {
+      cy.getDataTestIdDisabled(Cypress.env("SELECTORS").ROUTE_FORM_SUBMIT);
+    });
+  });
+
+  describe("Successful Route Creation with only Path", () => {
+    before("Clean Environment to create Route without Service Id", () => {
+      cy.cleanEnvironment();
+    });
+
+    it("should create Route successfully with path", () => {
+      cy.compileBasicRouteForm();
+
+      cy.createRoute();
+
+      cy.checkRouteCreated();
+    });
+  });
+  describe("Successful Route Creation with full information", () => {
+    before("Create Service and save ID", () => {
+      cy.createItem(
+        "services",
+        { url: Cypress.env("SERVICE_URL"), name: `new-service-${Date.now()}` },
+        { name: "serviceId", property: "id" },
+      );
+    });
+
+    it("should create Route successfully with associated service", () => {
+      cy.compileBasicRouteForm("full");
+
+      cy.createRoute("full");
+
+      cy.checkRouteCreated();
+    });
+  });
+});
