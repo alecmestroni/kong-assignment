@@ -56,6 +56,28 @@ Cypress.Commands.add("deleteItem", (itemType, itemId) => {
   });
 });
 
+Cypress.Commands.add(
+  "createItem",
+  (itemType, itemData, itemToSave = undefined) => {
+    const path = getApiPath(itemType);
+
+    cy.request({
+      method: "POST",
+      url: `${Cypress.env("KONG_ADMIN_URL")}${path}`,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: itemData,
+      failOnStatusCode: false,
+    }).then((response) => {
+      if (itemToSave)
+        Cypress.env(itemToSave.name, response.body[itemToSave.property]);
+      expect(response.status).to.eq(201);
+    });
+  },
+);
+
 Cypress.Commands.add("deleteAllItems", (itemType) => {
   cy.getAllItems(itemType).then((items) => {
     if (items.length > 0) {

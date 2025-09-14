@@ -10,8 +10,11 @@
       "HOMEPAGE": "/workspaces",
       "OVERVIEW": "/overview",
       "SERVICES": "/services",
+      "SERVICES_CREATION": "/services/create",
       "CONSUMERS": "/consumers",
+      "CONSUMERS_CREATION": "/consumers/create",
       "PLUGINS": "/plugins",
+      "PLUGINS_CREATION": "/plugins/create",
       "ROUTES": "/routes",
       "ROUTES_CREATION": "/routes/create"
     },
@@ -20,6 +23,9 @@
     },
     "SELECTORS": {
       "ACTION_BUTTON": "action-button",
+      "EMPTY_STATE_ACTION": "empty-state-action",
+      "ADD_ROUTE": "toolbar-add-route",
+      "ADD_SERVICE": "toolbar-add-gateway-service",
       "SERVICE_FORM_SUBMIT": "service-create-form-submit",
       "SERVICE_FORM_INPUT_NAME": "gateway-service-name-input",
       "SERVICE_FORM_INPUT_HOST": "gateway-service-host-input",
@@ -27,6 +33,7 @@
       "SERVICE_FORM_INPUT_URL": "gateway-service-url-input",
       "SERVICE_PROTOCOL_LABEL": "gateway-service-protocol-radio-label",
       "SERVICE_URL_LABEL": "gateway-service-url-radio-label",
+      "SERVICE_SELECT_INPUT": "input[placeholder=\"Select a service\"]",
       "SELECT_WRAPPER": "select-wrapper",
       "SELECT_ITEM_PREFIX": "select-item-",
       "FORM_ERROR": "form-error",
@@ -40,6 +47,12 @@
         "Consumers",
         "Plugins"
       ]
+    },
+    "LABELS": {
+      "SERVICE_CREATION": "New Gateway Service",
+      "ROUTE_CREATION": "Create Route",
+      "CONSUMER_CREATION": "New Consumer",
+      "PLUGIN_CREATION": "Filter plugins"
     }
   },
   "specPattern": [

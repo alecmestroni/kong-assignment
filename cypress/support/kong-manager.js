@@ -10,3 +10,6 @@ import "./common";
 before("clean environment", () => {
   cy.cleanEnvironment();
 });
+after("clean environment", () => {
+  cy.cleanEnvironment();
+});
