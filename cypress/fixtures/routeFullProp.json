@@ -1,34 +1,14 @@
 {
-  "protocols": [
-    "http",
-    "https"
-  ],
-  "tags": [
-    "tag1",
-    "full"
-  ],
+  "protocols": ["http", "https"],
+  "tags": ["tag1", "full"],
   "https_redirect_status_code": 426,
   "strip_path": true,
   "preserve_host": false,
   "request_buffering": true,
   "response_buffering": true,
-  "methods": [
-    "GET",
-    "PUT",
-    "POST",
-    "PATCH",
-    "DELETE",
-    "OPTIONS",
-    "HEAD",
-    "CONNECT",
-    "TRACE"
-  ],
-  "hosts": [
-    "example.com"
-  ],
-  "paths": [
-    "/mock"
-  ],
+  "methods": ["GET", "PUT", "POST", "PATCH", "DELETE", "OPTIONS", "HEAD", "CONNECT", "TRACE"],
+  "hosts": ["example.com"],
+  "paths": ["/mock"],
   "headers": null,
   "regex_priority": 0,
   "path_handling": "v0",

@@ -66,12 +66,7 @@
       "ALERT_BUTTON": ".alert-message > .k-button",
       "UUID_COPY": "id-copy-uuid",
       "COPY_TEXT": ".copy-text",
-      "OVERVIEW_CARDS": [
-        "Services",
-        "Routes",
-        "Consumers",
-        "Plugins"
-      ]
+      "OVERVIEW_CARDS": ["Services", "Routes", "Consumers", "Plugins"]
     },
     "LABELS": {
       "SERVICE_CREATION": "New Gateway Service",
@@ -79,18 +74,8 @@
       "CONSUMER_CREATION": "New Consumer",
       "PLUGIN_CREATION": "Filter plugins"
     },
-    "TEMP": [
-      "serviceName",
-      "routeName",
-      "serviceId",
-      "routeId",
-      "serviceData",
-      "routeData"
-    ]
+    "TEMP": ["serviceName", "routeName", "serviceId", "routeId", "serviceData", "routeData"]
   },
-  "specPattern": [
-    "**/*.km.js",
-    "**/*.cy.js"
-  ],
+  "specPattern": ["**/*.km.js", "**/*.cy.js"],
   "supportFile": "cypress/support/kong-manager.js"
 }

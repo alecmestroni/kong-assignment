@@ -1,6 +1,6 @@
 {
   "name": "kong-assignment",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Technical exercise for Kong",
   "homepage": "https://github.com/alecmestroni/kong-assignment#readme",
   "bugs": {
@@ -22,7 +22,11 @@
     "cy:run:local": "cypress run -e envName=km.local",
     "test:open": "npm run docker:up && wait-on http-get://localhost:8002 && npm run cy:open:local",
     "test:run": "npm run docker:up && wait-on http-get://localhost:8002 && npm run cy:run:local",
-    "merge:reports": "npx junit-merge -d \"./report\" -o \"./report/merged-report.xml\""
+    "merge:reports": "npx junit-merge -d \"./report\" -o \"./report/merged-report.xml\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write ."
   },
   "dependencies": {
     "cypress": "^15.2.0",
@@ -38,6 +42,6 @@
     "wait-on": "^8.0.5"
   },
   "lint-staged": {
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,json,md}": "prettier --write"
   }
 }

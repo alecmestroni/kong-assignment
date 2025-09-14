@@ -10,10 +10,7 @@
   "regex_priority": 0,
   "tags": [],
   "headers": null,
-  "protocols": [
-    "http",
-    "https"
-  ],
+  "protocols": ["http", "https"],
   "snis": null,
   "response_buffering": true,
   "preserve_host": false

@@ -1,47 +1,21 @@
 {
-  "hosts": [
-    "example.com",
-    "example2.com"
-  ],
+  "hosts": ["example.com", "example2.com"],
   "path_handling": "v0",
-  "methods": [
-    "GET",
-    "PUT",
-    "POST",
-    "PATCH",
-    "DELETE",
-    "OPTIONS",
-    "HEAD",
-    "CONNECT",
-    "TRACE"
-  ],
+  "methods": ["GET", "PUT", "POST", "PATCH", "DELETE", "OPTIONS", "HEAD", "CONNECT", "TRACE"],
   "sources": null,
   "strip_path": true,
   "destinations": null,
   "request_buffering": true,
   "https_redirect_status_code": 426,
   "regex_priority": 1,
-  "tags": [
-    "tag1",
-    "advanced"
-  ],
+  "tags": ["tag1", "advanced"],
   "headers": {
-    "Accept": [
-      "application/json"
-    ],
-    "x-api-version": [
-      "v1"
-    ]
+    "Accept": ["application/json"],
+    "x-api-version": ["v1"]
   },
-  "paths": [
-    "/mock"
-  ],
-  "protocols": [
-    "https"
-  ],
-  "snis": [
-    "api.example.com"
-  ],
+  "paths": ["/mock"],
+  "protocols": ["https"],
+  "snis": ["api.example.com"],
   "response_buffering": true,
   "preserve_host": false
 }
