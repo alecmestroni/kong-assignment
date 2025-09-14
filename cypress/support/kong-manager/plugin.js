@@ -1,5 +1,5 @@
 /**
- * Kong Manager Admin Commands
+ * Kong Manager Plugin Commands
  */
 
 Cypress.Commands.add("navigateToPluginSelectionFromRoute", (routeId) => {
