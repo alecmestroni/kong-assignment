@@ -10,4 +10,7 @@ module.exports = defineConfig({
       return config;
     },
   },
+  env: {
+    ENV_LOG_MODE: "silent",
+  },
 });
