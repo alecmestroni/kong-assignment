@@ -13,7 +13,6 @@ module.exports = defineConfig({
       cypressXrayJunitReporterReporterOptions: {
         mochaFile: "./report/[suiteFilename].xml",
         useFullSuiteTitle: false,
-        jenkinsMode: true,
         xrayMode: true,
         attachScreenshot: true,
         shortenLogMode: true,
