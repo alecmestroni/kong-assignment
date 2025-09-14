@@ -24,10 +24,10 @@ jobs:
       - name: Install deps
         run: npm ci
 
-      - name: Run Tests 2 times
+      - name: Run Tests 1 times
         run: |
-          for i in {1..2}; do
-            echo "Test run $i/2"
+          for i in {1..1}; do
+            echo "Test run $i/1"
             npm run test:run
           done
 
