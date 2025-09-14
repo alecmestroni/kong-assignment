@@ -19,8 +19,8 @@ Cypress.Commands.add("navigateToPluginSelection", (action = "empty-state") => {
 })
 
 Cypress.Commands.add("verifyPluginSelectionPage", ({ expectedSearch = "", shouldHaveBasicAuth = true } = {}) => {
-  cy.location("pathname", { timeout: 30000 }).should("eq", `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").PLUGINS_SELECTION}`)
-  cy.location("search", { timeout: 30000 }).should("eq", expectedSearch)
+  cy.location("pathname").should("eq", `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").PLUGINS_SELECTION}`)
+  cy.location("search").should("eq", expectedSearch)
 
   if (shouldHaveBasicAuth) {
     cy.getDataTestId(Cypress.env("SELECTORS").PLUGIN_BASIC_AUTH).should("exist")

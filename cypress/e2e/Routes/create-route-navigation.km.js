@@ -6,8 +6,8 @@ describe("Gateway Route Creation - Navigation Flow", () => {
     it("should redirect to route creation form with pre-selected service and redirect URL", { jiraKey: "KONG-5784" }, () => {
       cy.visit(`/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").SERVICES}/${Cypress.env("serviceId")}`)
       cy.get(Cypress.env("SELECTORS").ALERT_BUTTON).click()
-      cy.location("pathname", { timeout: 30000 }).should("eq", `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES_CREATION}`)
-      cy.location("search", { timeout: 30000 }).should(
+      cy.location("pathname").should("eq", `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES_CREATION}`)
+      cy.location("search").should(
         "eq",
         `?serviceId=${Cypress.env("serviceId")}&redirect=/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").SERVICES}/${Cypress.env("serviceId")}${Cypress.env("PATHS").ROUTES}`
       )
@@ -20,8 +20,8 @@ describe("Gateway Route Creation - Navigation Flow", () => {
       cy.visitHomePage()
       cy.openWorkspaceOverview()
       cy.getDataTestId(Cypress.env("SELECTORS").ACTION_BUTTON).click()
-      cy.location("pathname", { timeout: 30000 }).should("eq", `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES_CREATION}`)
-      cy.location("search", { timeout: 30000 }).should("eq", `?cta=new-user`)
+      cy.location("pathname").should("eq", `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES_CREATION}`)
+      cy.location("search").should("eq", `?cta=new-user`)
       cy.get(Cypress.env("SELECTORS").ROUTE_SERVICE_SELECT_INPUT).should("exist")
       cy.contains(Cypress.env("LABELS").ROUTE_CREATION).should("exist")
     })
@@ -30,8 +30,8 @@ describe("Gateway Route Creation - Navigation Flow", () => {
     it("should redirect to route creation form with service selector visible", { jiraKey: "KONG-6203" }, () => {
       cy.visit(`/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES}`)
       cy.getDataTestId(Cypress.env("SELECTORS").EMPTY_STATE_ACTION).click()
-      cy.location("pathname", { timeout: 30000 }).should("eq", `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES_CREATION}`)
-      cy.location("search", { timeout: 30000 }).should("eq", "")
+      cy.location("pathname").should("eq", `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES_CREATION}`)
+      cy.location("search").should("eq", "")
       cy.get(Cypress.env("SELECTORS").ROUTE_SERVICE_SELECT_INPUT).should("exist")
       cy.contains(Cypress.env("LABELS").ROUTE_CREATION).should("exist")
     })
@@ -43,8 +43,8 @@ describe("Gateway Route Creation - Navigation Flow", () => {
     it("should redirect to route creation form with service selector visible", { jiraKey: "KONG-7865" }, () => {
       cy.visit(`/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES}`)
       cy.getDataTestId(Cypress.env("SELECTORS").ADD_ROUTE).click()
-      cy.location("pathname", { timeout: 30000 }).should("eq", `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES_CREATION}`)
-      cy.location("search", { timeout: 30000 }).should("eq", "")
+      cy.location("pathname").should("eq", `/${Cypress.env("WORKSPACE_NAME")}${Cypress.env("PATHS").ROUTES_CREATION}`)
+      cy.location("search").should("eq", "")
       cy.get(Cypress.env("SELECTORS").ROUTE_SERVICE_SELECT_INPUT).should("exist")
       cy.contains(Cypress.env("LABELS").ROUTE_CREATION).should("exist")
     })

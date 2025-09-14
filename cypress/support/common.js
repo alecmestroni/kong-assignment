@@ -5,7 +5,7 @@
 Cypress.Commands.add("visitHomePage", () => {
   cy.visit("/")
   cy.url().should("include", Cypress.env("PATHS").HOMEPAGE)
-  cy.contains(Cypress.env("ERRORS").MISSING_LICENSE, { timeout: 30000 }).should("be.visible")
+  cy.contains(Cypress.env("ERRORS").MISSING_LICENSE, { timeout: 10_000 }).should("be.visible")
 })
 
 Cypress.Commands.add("openWorkspaceOverview", () => {
@@ -96,7 +96,7 @@ Cypress.Commands.add("interceptAndRemoveProp", (path, propToRemove, method = "PO
 })
 
 Cypress.Commands.add("waitSimple", (name, statusCode = 200) => {
-  cy.wait(`@${name}`, { timeout: 30000 }).then((api) => {
+  cy.wait(`@${name}`, { timeout: 10_000 }).then((api) => {
     cy.on("fail", (err) => {
       err.message += `\n\nLastInterceptedResponseBody:</strong>\n${JSON.stringify(api.response?.body, null, 1)}\n`
       throw err
