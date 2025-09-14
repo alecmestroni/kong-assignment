@@ -4,33 +4,35 @@
   "viewportHeight": 1080,
   "env": {
     "KONG_ADMIN_URL": "http://localhost:8001",
-    "SERVICE_URL": "https://api.kong-air.com/flights",
     "WORKSPACE_NAME": "default",
+    "SERVICE_URL": "https://api.kong-air.com/flights",
     "PATHS": {
       "HOMEPAGE": "/workspaces",
       "OVERVIEW": "/overview",
       "SERVICES": "/services",
       "CONSUMERS": "/consumers",
       "PLUGINS": "/plugins",
-      "ROUTES": "/routes"
+      "ROUTES": "/routes",
+      "ROUTES_CREATION": "/routes/create"
     },
     "ERRORS": {
       "MISSING_LICENSE": "No valid Kong Enterprise license configured: Enterprise features will be read-only. Configure a license or try Kong Konnect for the fastest way to get started with Kong Gateway. You can contact sales for any Enterprise license or upgrade questions."
     },
     "SELECTORS": {
       "ACTION_BUTTON": "action-button",
-      "SUBMIT_FORM": "service-create-form-submit",
-      "SERVICE_NAME_INPUT": "gateway-service-name-input",
-      "SERVICE_HOST_INPUT": "gateway-service-host-input",
-      "SERVICE_PATH_INPUT": "gateway-service-path-input",
-      "SERVICE_URL_INPUT": "gateway-service-url-input",
-      "PROTOCOL_RADIO": "gateway-service-protocol-radio-label",
-      "URL_RADIO": "gateway-service-url-radio-label",
+      "SERVICE_FORM_SUBMIT": "service-create-form-submit",
+      "SERVICE_FORM_INPUT_NAME": "gateway-service-name-input",
+      "SERVICE_FORM_INPUT_HOST": "gateway-service-host-input",
+      "SERVICE_FORM_INPUT_PATH": "gateway-service-path-input",
+      "SERVICE_FORM_INPUT_URL": "gateway-service-url-input",
+      "SERVICE_PROTOCOL_LABEL": "gateway-service-protocol-radio-label",
+      "SERVICE_URL_LABEL": "gateway-service-url-radio-label",
       "SELECT_WRAPPER": "select-wrapper",
       "SELECT_ITEM_PREFIX": "select-item-",
       "FORM_ERROR": "form-error",
       "WORKSPACE_LINK_PREFIX": "workspace-link-",
-      "ID_COPY": "id-copy-uuid",
+      "ALERT_BUTTON": ".alert-message > .k-button",
+      "UUID_COPY": "id-copy-uuid",
       "COPY_TEXT": ".copy-text",
       "OVERVIEW_CARDS": [
         "Services",

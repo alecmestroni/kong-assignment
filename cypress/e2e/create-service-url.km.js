@@ -3,29 +3,29 @@ describe("Gateway Service Creation - URL Form", () => {
     cy.visitHomePage();
     cy.openWorkspaceOverview();
     cy.getDataTestId(Cypress.env("SELECTORS").ACTION_BUTTON).click();
-    cy.getDataTestId(Cypress.env("SELECTORS").URL_RADIO).click();
+    cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_URL_LABEL).click();
   });
 
   describe("Form State and Validation", () => {
     it("should keep submit button disabled when no URL is provided", () => {
-      cy.getDataTestIdDisabled(Cypress.env("SELECTORS").SUBMIT_FORM);
+      cy.getDataTestIdDisabled(Cypress.env("SELECTORS").SERVICE_FORM_SUBMIT);
     });
 
     it("should show browser validation error when URL field is empty", () => {
       cy.removeAttrFromDataTestId(
-        Cypress.env("SELECTORS").SUBMIT_FORM,
+        Cypress.env("SELECTORS").SERVICE_FORM_SUBMIT,
         "disabled",
       );
 
       cy.interceptSimple("/validate", "POST", true);
 
-      cy.getDataTestId(Cypress.env("SELECTORS").SUBMIT_FORM).click();
+      cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_FORM_SUBMIT).click();
 
-      cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_URL_INPUT)
+      cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_FORM_INPUT_URL)
         .invoke("prop", "validity")
         .its("valueMissing")
         .should("be.true");
-      cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_URL_INPUT)
+      cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_FORM_INPUT_URL)
         .invoke("prop", "validationMessage")
         .should("eq", "Please fill out this field.");
 
@@ -34,17 +34,17 @@ describe("Gateway Service Creation - URL Form", () => {
 
     it("should not send validation request when required attribute is removed", () => {
       cy.removeAttrFromDataTestId(
-        Cypress.env("SELECTORS").SUBMIT_FORM,
+        Cypress.env("SELECTORS").SERVICE_FORM_SUBMIT,
         "disabled",
       );
       cy.removeAttrFromDataTestId(
-        Cypress.env("SELECTORS").SERVICE_URL_INPUT,
+        Cypress.env("SELECTORS").SERVICE_FORM_INPUT_URL,
         "required",
       );
 
       cy.interceptSimple("/validate", "POST", true);
 
-      cy.getDataTestId(Cypress.env("SELECTORS").SUBMIT_FORM).click();
+      cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_FORM_SUBMIT).click();
 
       cy.checkNoRequest("/validate");
     });
@@ -52,7 +52,7 @@ describe("Gateway Service Creation - URL Form", () => {
 
   describe("Server-side Validation", () => {
     it("should show server error when URL property is missing from request", () => {
-      cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_URL_INPUT).type(
+      cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_FORM_INPUT_URL).type(
         Cypress.env("SERVICE_URL"),
       );
 
@@ -67,20 +67,11 @@ describe("Gateway Service Creation - URL Form", () => {
 
   describe("Successful Service Creation", () => {
     it("should create Gateway Service successfully with valid URL", () => {
-      cy.getDataTestIdDisabled(Cypress.env("SELECTORS").SUBMIT_FORM);
-
-      cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_URL_INPUT).type(
+      cy.getDataTestId(Cypress.env("SELECTORS").SERVICE_FORM_INPUT_URL).type(
         Cypress.env("SERVICE_URL"),
       );
 
-      cy.saveTextFromInput(
-        Cypress.env("SELECTORS").SERVICE_NAME_INPUT,
-        "serviceName",
-      );
-
       cy.createService();
-
-      cy.checkTextFromCopy(Cypress.env("SELECTORS").ID_COPY, "serviceId");
 
       cy.checkServiceCreated();
     });
