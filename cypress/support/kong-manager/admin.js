@@ -1,5 +1,8 @@
 /**
  * Kong Manager Admin Commands
+ * - service https://developer.konghq.com/gateway/entities/service/
+ * - route https://developer.konghq.com/gateway/entities/route/
+ * - plugin https://developer.konghq.com/gateway/entities/plugin/
  */
 
 if (!Cypress.env("KONG_ADMIN_URL")) {

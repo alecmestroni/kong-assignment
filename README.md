@@ -105,24 +105,32 @@ npm run test:open
 kong-assignment/
 ├── cypress/
 │   ├── e2e/
-│   │   ├── Services/           # Service creation tests
-│   │   │   ├── create-service-navigation.km.js
-│   │   │   ├── create-service-protocol.km.js
-│   │   │   └── create-service-url.km.js
-│   │   └── Routes/             # Route creation tests
-│   │       ├── create-route-basic.km.js
-│   │       └── create-route-navigation.km.js
-│   ├── fixtures/               # Test data
+│   │   ├── Plugins/            # Plugin creation tests
+│   │   │   ├── select-plugin-basic.km.js
+│   │   │   └── select-plugin-navigation.km.js
+│   │   ├── Routes/             # Route creation tests
+│   │   │   ├── create-route-basic.km.js
+│   │   │   └── create-route-navigation.km.js
+│   │   └── Services/           # Service creation tests
+│   │       ├── create-service-navigation.km.js
+│   │       ├── create-service-protocol.km.js
+│   │       └── create-service-url.km.js
+│   ├── fixtures/               # Test data (e.g., for routes, services)
 │   ├── support/
-│   │   ├── kong-manager/       # Custom commands for Kong Manager
+│   │   ├── kong-manager/       # Custom commands for Kong Manager UI
+│   │   │   ├── admin.js
+│   │   │   ├── plugin.js
+│   │   │   ├── route.js
+│   │   │   └── service.js
 │   │   ├── common.js           # Shared utilities
-│   │   └── kong-manager.js     # Main support file
+│   │   ├── e2e.js              # Cypress e2e support file
+│   │   └── kong-manager.js     # Main support file for Kong Manager
 │   └── screenshots/            # Test failure screenshots
 ├── env.config/
-│   └── km.local.json          # Environment configuration
-├── report/                    # XML test reports (generated)
-├── docker-compose.yml         # Kong Gateway setup
-├── cypress.config.js          # Cypress configuration
+│   └── km.local.json           # Environment configuration
+├── report/                     # XML test reports (generated)
+├── docker-compose.yml          # Kong Gateway setup
+├── cypress.config.js           # Cypress configuration
 └── package.json
 ```
 

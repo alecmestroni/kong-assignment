@@ -1,5 +1,5 @@
 /**
- * Kong Manager Service Commands
+ * Kong Manager Gateway Service Commands
  */
 
 Cypress.Commands.add("checkServiceCreated", () => {
